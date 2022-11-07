@@ -1,0 +1,29 @@
+{% extends 'preguntas/base.html' %}
+
+{% block content %}
+{% if preguntas %}
+    <div class="w-4/5 mx-auto">
+    {% for pregunta in preguntas %}
+        <section class="mt-6">
+          <p class="text-xl">{{ pregunta.texto }}</p>
+          {% if pregunta.imagen %}
+            <img src="{{ pregunta.imagen.url }}"/>
+            <p class="text-xl">{{ pregunta.contexto }}</p>
+          {% endif %}
+          <ol>
+            {% for opcion in pregunta.opciones.all %}
+              <input type="radio" id="html" name="{{ pregunta.pk }}" value="{{ opcion.pk }}">
+              <label for="{{ opcion.pk }}">{{ opcion.texto }}</label><br>
+            {% endfor %}
+          </ol>
+        </section>
+        <hr/>
+    {% endfor %}
+      <div class="text-center">
+        <button class="mt-4 text-white bg-blue-600 hover:bg-blue-800 text-sm font-medium rounded-lg px-5 focus:ring-4 focus:ring-blue-300 px-4">Enviar</button>
+      </div>
+    </div>
+{% else %}
+    <p>No hay preguntas</p>
+{% endif %}
+{% endblock %}
