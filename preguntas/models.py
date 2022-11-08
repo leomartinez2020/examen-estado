@@ -38,6 +38,7 @@ class Pregunta(models.Model):
     respuesta_correcta = models.ManyToManyField(RespuestaMultiple, related_name="correcta", blank=True)
     explicacion = models.TextField(blank=True)
     imagen = models.ImageField(upload_to='media', null=True, blank=True)
+    respuestas_tienen_imagen = models.BooleanField(default=False)
 
     def __str__(self):
         return self.texto
