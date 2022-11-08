@@ -560,6 +560,14 @@ video {
   margin-top: 1.5rem;
 }
 
+.mr-8 {
+  margin-right: 2rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -586,6 +594,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .rounded-lg {
