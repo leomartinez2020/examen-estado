@@ -9,6 +9,7 @@
       <p class="text-xl text-gray-700">Pregunta: {{ item.0.texto }} {% if item.0.contexto %} {{ item.0.contexto }} {% endif %}</p>
       <p class="text-xl text-gray-700">Tu respuesta: {{ item.1.texto }}</p>
       <p class="text-xl text-gray-700">Respuesta correcta: {{ item.2.texto }}</p>
+      <p class="text-xl text-gray-700">Explicación: {{ item.0.explicacion }}</p>
     </div>
   {% endfor %}
 </section>

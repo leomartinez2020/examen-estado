@@ -2,3 +2,4 @@ node_modules/
 preguntas/__pycache__/
 preguntas/migrations/__pycache__/
 preicfes/__pycache__/
+.env
