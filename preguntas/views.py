@@ -7,7 +7,7 @@ def index(request):
 
 def prueba(request, categoria):
     quiz = Quiz.objects.get(categoria=categoria)
-    preguntas = Pregunta.objects.all()
+    preguntas = Pregunta.objects.filter(categoria=categoria)
     context = {'preguntas': preguntas, 'categoria': categoria, 'quiz': quiz}
     return render(request, 'preguntas/plantilla_preguntas.html', context)
 
