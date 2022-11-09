@@ -4,11 +4,11 @@
 <section class="w-4/5 mx-auto">
   <h1 class="text-gray-800 text-2xl">Exámenes disponibles:</h1>
   <ul>
-    <li><a href="{% url 'preguntas:prueba' 'CN' %}">Ciencias Naturales</a></li>
-    <li><a href="">Matemáticas</a></li>
-    <li><a href="">Lectura Crítica</a></li>
-    <li><a href="">Inglés</a></li>
-    <li><a href="">Ciencias Sociales y Ciudadanas</a></li>
+    <li><a href="{% url 'preguntas:prueba' 'ciencias' %}">Ciencias Naturales</a></li>
+    <li><a href="{% url 'preguntas:prueba' 'matematicas' %}">Matemáticas</a></li>
+    <li><a href="{% url 'preguntas:prueba' 'lectura' %}">Lectura Crítica</a></li>
+    <li><a href="{% url 'preguntas:prueba' 'ingles' %}">Inglés</a></li>
+    <li><a href="{% url 'preguntas:prueba' 'sociales' %}">Ciencias Sociales y Ciudadanas</a></li>
   </ul>
 </section>
 {% include "preguntas/footer.html" %}

@@ -9,17 +9,17 @@
         <section class="mt-6 border-b-2">
           <p class="text-xl">{{ pregunta.texto }}</p>
           {% if pregunta.imagen %}
-          <img src="{{ pregunta.imagen.url }}"/>
-          <p class="text-xl">{{ pregunta.contexto }}</p>
+            <img src="{{ pregunta.imagen.url }}"/>
+            <p class="text-xl">{{ pregunta.contexto }}</p>
           {% endif %}
           <!-- <div class="flex flex-wrap gap-1"> -->
-          <div>
+          <div {% if pregunta.respuestas_tienen_imagen %}class="flex flex-wrap gap-1"{% endif %}>
             {% for opcion in pregunta.opciones.all %}
-            <div {% if opcion.imagen %}class="flex"{% endif %}>
+            <div {% if opcion.imagen %}class="flex border-2 border-gray-200"{% endif %}>
               <input type="radio" id="opcion{{ opcion.pk }}" name="pregunta{{ pregunta.pk }}" value="{{ pregunta.pk}}-{{opcion.pk }}">
               {% if opcion.imagen %}
               <label for="opcion{{ opcion.pk }}"></label>
-              <img src="{{ opcion.imagen.url }}" alt=""/>
+              <img class="mr-6" src="{{ opcion.imagen.url }}" alt=""/>
               {% else %}
                 <label class="mr-6" for="opcion{{ opcion.pk }}">{{ opcion.texto }}</label>
               {% endif %}

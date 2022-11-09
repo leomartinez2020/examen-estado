@@ -3,17 +3,12 @@ from django.utils import timezone
 from django.db import models
 from django.utils.text import slugify
 
-CIENCIAS = 'CN'
-MATEMATICAS = 'MA'
-LECTURA = 'LE'
-INGLES = 'IN'
-SOCIALES = 'SC'
 PRUEBAS = [
-    (CIENCIAS, 'Ciencias'),
-    (MATEMATICAS, 'Matematicas'),
-    (LECTURA, 'Lectura'),
-    (INGLES, 'Ingles'),
-    (SOCIALES, 'Sociales'),
+    ('ciencias', 'ciencias'),
+    ('matematicas', 'matematicas'),
+    ('lectura', 'lectura'),
+    ('ingles', 'ingles'),
+    ('sociales', 'sociales'),
 ]
 
 class RespuestaMultiple(models.Model):
@@ -26,9 +21,9 @@ class RespuestaMultiple(models.Model):
 
 class Pregunta(models.Model):
     categoria = models.CharField(
-        max_length=2,
+        max_length=12,
         choices=PRUEBAS,
-        default=CIENCIAS,
+        default='ciencias',
         null=True,
         blank=True
     )
@@ -48,9 +43,9 @@ class Quiz(models.Model):
     '''A quiz template'''
     #setter = models.ForeignKey(User, related_name='setter')
     titulo = models.CharField(max_length=100)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True, null=True)
     descripcion = models.TextField(blank=True, null=True)
-    categoria = models.CharField(choices=PRUEBAS, default=CIENCIAS, max_length=2)
+    categoria = models.CharField(choices=PRUEBAS, default='ciencias', max_length=12)
     preguntas = models.ManyToManyField(Pregunta)
     publicado = models.DateTimeField(blank=True, null=True)
     fecha_agregado = models.DateTimeField(default=timezone.now)

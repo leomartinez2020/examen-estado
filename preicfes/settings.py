@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 from decouple import config
@@ -25,9 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['18.234.209.76', 'ec2-18-234-209-76.compute-1.amazonaws.com']
+ALLOWED_HOSTS = [
+    config('IP_ADDRESS'),
+    config('DOMAIN_NAME'),
+    config('AMZ_DOMAIN'),
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -124,10 +132,15 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'prod/static/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = ''
-MEDIA_URL = ''
+#MEDIA_ROOT = ''
+#MEDIA_URL = ''
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
