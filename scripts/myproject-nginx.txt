@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bestpreicfes.com www.bestpreicfes.com 18.234.209.76;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/ubuntu/mysaas/preicfes/prod/static;
+    }
+
+    location /media/{
+        root /home/ubuntu/mysaas/preicfes/media/;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
